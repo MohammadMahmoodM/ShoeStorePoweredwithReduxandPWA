@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import men from '../../images/men.png';
-import women from '../../images/women.png';
-import kids from '../../images/kids.png';
+import men from '../../../images/men.png';
+import women from '../../../images/women.png';
+import kids from '../../../images/kids.png';
 import styles from './Collections.module.css';
 
 export const Collections: React.FC<{}> = () => {

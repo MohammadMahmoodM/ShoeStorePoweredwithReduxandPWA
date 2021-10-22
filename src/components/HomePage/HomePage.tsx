@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { HeroImage } from './HeroImage';
-import { Collections } from './Collections';
+import { HeroImage } from './HeroImage/HeroImage';
+import { Collections } from './Collections/Collections';
 
 
 export const HomePage = () => {

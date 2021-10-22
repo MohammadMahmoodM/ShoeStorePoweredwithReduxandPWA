@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './HeroImage.module.css';
-import shoeImg from '../../images/feature-image-shoe.png';
+import shoeImg from '../../../images/feature-image-shoe.png';
 
 export const HeroImage = () => {
     

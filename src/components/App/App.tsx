@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 // Custom components
-import { NavBar, HomePage, Footer, ProductsIndex, Cart, ProductDetails, CheckOut } from '..';
+import { NavBar, HomePage, Footer, Cart, CheckOut,  ProductsIndex,  ProductDetails } from '..';
 
 export const App = () => {
   return (
