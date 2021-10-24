@@ -8,10 +8,10 @@ const initialState: Shoes = {
     shoesById: {...shoes.men, ...shoes.women, ...shoes.kids}
 };
 
-const productsSlice = createSlice({   // THis is giving value to the reducer
+const productsSlice = createSlice({   
     name: 'products',
     initialState,
     reducers: {},
 });
 
-export default productsSlice.reducer
+export default productsSlice.reducer;  // THis is giving value to the reducer

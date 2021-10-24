@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer, { RootState } from './rootReducer';
 
-export const initialTestState: RootState = {
+export const initialTestState: RootState = {   // mockingStore is not used for holding data in any way it's just being used for Testing actions on data
     products: {
         men: {
             "3f60de24-1815-4d88-a8dc-5ceda3f41bdc": {

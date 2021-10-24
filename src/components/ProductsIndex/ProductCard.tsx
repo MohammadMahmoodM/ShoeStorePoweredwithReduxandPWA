@@ -1,64 +1,42 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
-import { MdDescription } from 'react-icons/md';
-
-//import { Notification } from '../';
 import { RootState } from '../../store/rootReducer';
-//import { addToCart } from '../Cart/cartSlice';
-//import styles from './ProductCard.module.css';
 
 interface Props {
     shoeId: string;
 }
 
-export const ProductCard: React.FC<Props> = ({ shoeId }) => {
+export const ProductCard = ({ shoeId }: Props) => {
     const shoe: ShoeData = useSelector((state: RootState) => state.products.shoesById[shoeId]);
-    const dispatch = useDispatch();
+
     const { category } = useParams();
-    const navigateTo = useNavigate();
-    const [ showNotification, setShowNotification ] = useState(false);
 
     const add = () => {
-        const item: CartItem = {
-            id: shoeId,
+        const item: CartItem = {    // CartItem is a type scriptLet see where it's comming from
             name: shoe.name,
+            id: shoeId,
             price: +shoe.price.slice(1),
-            category: shoe.category,
             image: shoe.images[0],
+            category: shoe.category,
             quantity: 1,
             includedInSum: false,
         };
-        //dispatch( addToCart(item) );
 
-        setShowNotification(true);
-        setTimeout(() => setShowNotification(false), 4000);
     }
 
     return (
-        <div >
-            <img src={shoe.images[0]} alt="shoe" title={shoe.name} />
+        <div>
+            <img src={shoe.images[0]} alt="Image Picture" title={shoe.name} />
             <p>{shoe.name}</p>
-            <p>{`Category: ${shoe.category}`}</p>
+            <p>{`Category ${shoe.category}`}</p>
             <p>{shoe.price}</p>
             <button
                 onClick={() => add()}
-                data-testid="add-btn"
             >
-                <FaCartPlus /> Add to Cart
+                <FaCartPlus /> Add To Card
             </button>
-            <button
-                onClick={() => navigateTo(`/${category}/${shoeId}`)}
-                data-testid="details-btn"
-            >
-                <MdDescription /> Product Details
-            </button>
-            {/* {showNotification
-                ? <Notification type="ADD" />
-                : null
-            } */}
         </div>
-    )
+    );
 }
