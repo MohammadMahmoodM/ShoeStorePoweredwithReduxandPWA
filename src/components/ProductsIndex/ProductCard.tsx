@@ -1,8 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
 import { RootState } from '../../store/rootReducer';
+import { addToCart } from '../Cart/CartSlice';
 
 interface Props {
     shoeId: string;
@@ -11,6 +12,7 @@ interface Props {
 export const ProductCard = ({ shoeId }: Props) => {
     const shoe: ShoeData = useSelector((state: RootState) => state.products.shoesById[shoeId]);
 
+    const dispatch = useDispatch();
     const { category } = useParams();
 
     const add = () => {
@@ -23,6 +25,7 @@ export const ProductCard = ({ shoeId }: Props) => {
             quantity: 1,
             includedInSum: false,
         };
+        dispatch( addToCart(item) );
 
     }
 

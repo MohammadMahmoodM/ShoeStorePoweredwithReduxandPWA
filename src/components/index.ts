@@ -6,4 +6,4 @@ export { ProductsIndex } from '../components/ProductsIndex/ProductsIndex';
 export { Cart } from '../components/Cart/Cart';
 export { ProductDetails } from './ProductDetails/ProductDetails';
 export { CheckOut } from './CheckOut/CheckOut';
-//export { notification } from './Notification/Notification';
+export { Notification } from './Notification/Notification';
