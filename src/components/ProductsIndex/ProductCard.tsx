@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { FaCartPlus } from 'react-icons/fa';
 import { RootState } from '../../store/rootReducer';
 import { addToCart } from '../Cart/CartSlice';
+import styles from './ProductCard.module.css'
 
 interface Props {
     shoeId: string;
@@ -30,13 +31,14 @@ export const ProductCard = ({ shoeId }: Props) => {
     }
 
     return (
-        <div>
-            <img src={shoe.images[0]} alt="Image Picture" title={shoe.name} />
-            <p>{shoe.name}</p>
-            <p>{`Category ${shoe.category}`}</p>
-            <p>{shoe.price}</p>
+        <div className={styles.card}>
+            <img src={shoe.images[0]} alt="Image Picture" title={shoe.name} className={styles.shoeImage}/>
+            <p className={styles.shoeName}>{shoe.name}</p>
+            <p className={styles.shoeCategory}>{`Category ${shoe.category}`}</p>
+            <p className={styles.shoePrice}>{shoe.price}</p>
             <button
                 onClick={() => add()}
+                className={styles.addToCart}
             >
                 <FaCartPlus /> Add To Card
             </button>

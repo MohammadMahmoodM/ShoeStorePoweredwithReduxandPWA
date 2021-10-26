@@ -1,50 +1,50 @@
-// import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-// const initialState: CartItem[] = [ ]
-
-// const getIndexofItem = (state: CartItem[], idToFind: string): number => {
-//     const ids = state.map(item => item.id)
-//     return (
-//         ids.indexOf(idToFind)
-//     );
-// }
-
-
-// const cartSlice = createSlice({
-//     name: 'cart',
-//     initialState,
-//     reducers: {  // Define a Reducer Here
-//        addToCart(state, action: PayloadAction<CartItem>){
-//            const itemIndex = getIndexofItem(state, action.payload.id);
-//            if(itemIndex && itemIndex < 0) // if item less then 0 then action.playload return which also have nothing
-//            state.push(action.payload);
-//            else
-//            state[itemIndex].quantity = action.payload.quantity + 1;
-//        },
-//        removeFromCart(state, action: PayloadAction<{id: string}>){
-//            return state.filter (item => item.id !== action.payload.id)
-//        },
-//        toggleInclude(state, action: PayloadAction<{id: string}>){
-//            const itemIndex = getIndexofItem(state, action.payload.id);
-//            state[itemIndex].includedInSum = !state[itemIndex].includedInSum;
-//        },
-//        batchRemove(state, action: PayloadAction<{ids: string[]}>) {
-//         return state.filter( item => !action.payload.ids.includes(item.id) );
-//     },
-//     },
-// });
-
-// export const {
-//     addToCart,
-//     removeFromCart,
-//     toggleInclude,
-//     batchRemove
-// } = cartSlice.actions;
-// export default cartSlice.reducer;
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: CartItem[] = [
+const initialState: CartItem[] = [ ]
+
+const getIndexofItem = (state: CartItem[], idToFind: string): number => {
+    const ids = state.map(item => item.id)
+    return (
+        ids.indexOf(idToFind)
+    );
+}
+
+
+const cartSlice = createSlice({
+    name: 'cart',
+    initialState,
+    reducers: {  // Define a Reducer Here
+       addToCart(state, action: PayloadAction<CartItem>){
+           const itemIndex = getIndexofItem(state, action.payload.id);
+           if(itemIndex && itemIndex < 0) // if item less then 0 then action.playload return which also have nothing
+           state.push(action.payload);
+           else
+           state[itemIndex].quantity = action.payload.quantity + 1;
+       },
+       removeFromCart(state, action: PayloadAction<{id: string}>){
+           return state.filter (item => item.id !== action.payload.id)
+       },
+       toggleInclude(state, action: PayloadAction<{id: string}>){
+           const itemIndex = getIndexofItem(state, action.payload.id);
+           state[itemIndex].includedInSum = !state[itemIndex].includedInSum;
+       },
+       batchRemove(state, action: PayloadAction<{ids: string[]}>) {
+        return state.filter( item => !action.payload.ids.includes(item.id) );
+    },
+    },
+});
+
+export const {
+    addToCart,
+    removeFromCart,
+    toggleInclude,
+    batchRemove
+} = cartSlice.actions;
+export default cartSlice.reducer;
+
+// import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+// const initialState: CartItem[] = [
     // {
     //     id: "3f60de24-1815-4d88-a8dc-5ceda3f41bdc",
     //     name: "Air Jordan 1 Mid",
@@ -63,55 +63,55 @@ const initialState: CartItem[] = [
     //     quantity: 3,
     //     includedInSum: true,
     // },
-];
+// ];
 
-const getItemIndex = (state: CartItem[], idToFind: string): number => {
-    const ids = state.map(item => item.id);
-    return ids.indexOf(idToFind);
-}
+// const getItemIndex = (state: CartItem[], idToFind: string): number => {
+//     const ids = state.map(item => item.id);
+//     return ids.indexOf(idToFind);
+// }
 
-const cartSlice = createSlice({
-    name: 'cart',
-    initialState,
-    reducers: {
-        addToCart(state, action: PayloadAction<CartItem>) {
-            const itemIndex = getItemIndex(state, action.payload.id);
-            if (itemIndex && itemIndex < 0)
-                state.push(action.payload);
-            else
-                state[itemIndex].quantity += action.payload.quantity;
-        },
-        removeFromCart(state, action: PayloadAction<{id: string}>) {
-            return state.filter( item => item.id !== action.payload.id );
-        },
-        incrementQuantity(state, action: PayloadAction<{id: string}>) {
-            const itemIndex = getItemIndex(state, action.payload.id);
-            state[itemIndex].quantity += 1;
-        },
-        decrementQuantity(state, action: PayloadAction<{id: string}>) {
-            const itemIndex = getItemIndex(state, action.payload.id);
+// const cartSlice = createSlice({
+//     name: 'cart',
+//     initialState,
+//     reducers: {
+//         addToCart(state, action: PayloadAction<CartItem>) {
+//             const itemIndex = getItemIndex(state, action.payload.id);
+//             if (itemIndex && itemIndex < 0)
+//                 state.push(action.payload);
+//             else
+//                 state[itemIndex].quantity += action.payload.quantity;
+//         },
+//         removeFromCart(state, action: PayloadAction<{id: string}>) {
+//             return state.filter( item => item.id !== action.payload.id );
+//         },
+//         incrementQuantity(state, action: PayloadAction<{id: string}>) {
+//             const itemIndex = getItemIndex(state, action.payload.id);
+//             state[itemIndex].quantity += 1;
+//         },
+//         decrementQuantity(state, action: PayloadAction<{id: string}>) {
+//             const itemIndex = getItemIndex(state, action.payload.id);
 
-            if (state[itemIndex].quantity > 1)
-                state[itemIndex].quantity -= 1;
-            else
-                return state.filter( item => item.id !== action.payload.id );
-        },
-        batchRemove(state, action: PayloadAction<{ids: string[]}>) {
-            return state.filter( item => !action.payload.ids.includes(item.id) );
-        },
-        toggleInclude(state, action: PayloadAction<{id: string}>) {
-            const itemIndex = getItemIndex(state, action.payload.id);
-            state[itemIndex].includedInSum = !state[itemIndex].includedInSum;
-        },
-    },
-});
+//             if (state[itemIndex].quantity > 1)
+//                 state[itemIndex].quantity -= 1;
+//             else
+//                 return state.filter( item => item.id !== action.payload.id );
+//         },
+//         batchRemove(state, action: PayloadAction<{ids: string[]}>) {
+//             return state.filter( item => !action.payload.ids.includes(item.id) );
+//         },
+//         toggleInclude(state, action: PayloadAction<{id: string}>) {
+//             const itemIndex = getItemIndex(state, action.payload.id);
+//             state[itemIndex].includedInSum = !state[itemIndex].includedInSum;
+//         },
+//     },
+// });
 
-export const {
-    addToCart,
-    removeFromCart,
-    incrementQuantity,
-    decrementQuantity,
-    batchRemove,
-    toggleInclude,
-} = cartSlice.actions;
-export default cartSlice.reducer;
+// export const {
+//     addToCart,
+//     removeFromCart,
+//     incrementQuantity,
+//     decrementQuantity,
+//     batchRemove,
+//     toggleInclude,
+// } = cartSlice.actions;
+// export default cartSlice.reducer;
