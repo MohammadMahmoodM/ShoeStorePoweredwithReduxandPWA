@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { toggleInclude } from './CartSlice';
+import { toggleInclude, removeFromCart } from './CartSlice';
 
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import styles from './CartItem.module.css';
@@ -43,8 +43,18 @@ export const CartItem = ({ item }: Props) => {
                     <p>{name}</p>
                     <p>{category}</p>
                 </div>
+                <div>
+                    <button
+                        className = {styles.delete}
+                        onClick={() => dispatch(removeFromCart({ id }))}
+                        title="Remove from cart."
+                        data-testid="delete-btn"
+                    >
+                        <RiDeleteBin2Fill />
+                    </button>
+                </div>
                 <div className={styles.price}>
-                    <p>{`$${ price}`}</p>
+                    <p>{`$${price}`}</p>
                     <p>{`Quantity${quantity}`}</p>
                 </div>
             </div>
@@ -64,7 +74,7 @@ export const CartItem = ({ item }: Props) => {
 //     item: CartItem;
 // }
 
-// export const CartItem: React.FC<Props> = ({ 
+// export const CartItem: React.FC<Props> = ({
 //     item: { id, name, price, category, image, quantity, includedInSum }
 // }) => {
 //     const dispatch = useDispatch();
@@ -89,7 +99,7 @@ export const CartItem = ({ item }: Props) => {
 //                 </div>
 //             </div>
 //             <div>
-//                 <div 
+//                 <div
 //                     onClick={() => navigateTo(`/${categoryId}/${id}`)}
 //                 >
 //                     <p>{name}</p>
@@ -116,7 +126,7 @@ export const CartItem = ({ item }: Props) => {
 //                     </div>
 //                 </div>
 //                 <div>
-//                     <button 
+//                     <button
 //                         onClick={() => dispatch( removeFromCart({ id }) )}
 //                         title="Remove from cart."
 //                         data-testid="delete-btn"

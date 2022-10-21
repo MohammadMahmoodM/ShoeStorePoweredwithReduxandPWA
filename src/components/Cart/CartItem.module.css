@@ -76,6 +76,7 @@
 
 .delete {
     justify-self: center;
+    font-size: 2.6rem;
 }
 .delete button {
     cursor: pointer;
